@@ -51,7 +51,7 @@ public class UserInfoController {
      */ 
     @PassToken
     @PostMapping("/register")
-    public String register(@RequestParam Map map){
+    public String register(@RequestBody  Map map){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encodePwd  = bCryptPasswordEncoder.encode(String.valueOf(map.get("password")));
 
@@ -79,7 +79,7 @@ public class UserInfoController {
      * @date: 2021/9/14 0014 15:32
      */
     @PostMapping("/login")
-    public Map<String,Object> login(@RequestParam Map user){
+    public Map<String,Object> login(@RequestBody  Map user){
         Map result=new HashMap();
         User userForBase=userInfoService.getUserInfoByName(String.valueOf(user.get("username")));
 
