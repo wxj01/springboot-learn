@@ -1,0 +1,3 @@
+# Project exclude paths
+/springboot-day01/target/
+/springboot-jwt/target/
