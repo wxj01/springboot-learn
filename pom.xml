@@ -9,6 +9,7 @@
         <module>springboot-jwt</module>
         <module>springboot-jta</module>
         <module>springboot-mybatis</module>
+        <module>springboot-retry</module>
     </modules>
 
     <parent>
