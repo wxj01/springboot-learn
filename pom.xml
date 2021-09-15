@@ -8,6 +8,7 @@
         <module>springboot-day01</module>
         <module>springboot-jwt</module>
         <module>springboot-jta</module>
+        <module>springboot-mybatis</module>
     </modules>
 
     <parent>
