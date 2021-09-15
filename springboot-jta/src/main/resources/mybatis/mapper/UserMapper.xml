@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wxj.springboot.jta.mapper">
+
+    <resultMap id="baseResultMap" type="com.wxj.springboot.jta.pojo.User">
+        <id column="id" property="id" javaType="java.lang.Integer" jdbcType="BIGINT"></id>
+        <result column="username" property="username" javaType="java.lang.String" jdbcType="VARCHAR"></result>
+        <result column="age" property="age" javaType="java.lang.Integer" jdbcType="BIGINT"></result>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.wxj.springboot.jta.pojo.User">
+        INSERT INTO user (username, age) VALUES (#{username}, #{age});
+    </insert>
+</mapper>
