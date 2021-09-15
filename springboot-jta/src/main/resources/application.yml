@@ -10,7 +10,7 @@ spring:
       mydbone:
         url: jdbc:mysql://localhost:3306/mydbone?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&pinGlobalTxToPhysicalConnection=true&autoReconnect=true
         username: root
-        password: 123456
+        password: root
         driver-class-name: com.mysql.cj.jdbc.Driver
         # 初始化时建立物理连接的个数。初始化发生在显示调用 init 方法，或者第一次 getConnection 时
         initialSize: 5
@@ -42,7 +42,7 @@ spring:
       mydbtwo:
         url: jdbc:mysql://localhost:3306/mydbtwo?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&pinGlobalTxToPhysicalConnection=true&autoReconnect=true
         username: root
-        password: 123456
+        password: root
         driver-class-name: com.mysql.cj.jdbc.Driver
         initialSize: 6
         minIdle: 6
