@@ -10,7 +10,8 @@
         <module>springboot-jta</module>
         <module>springboot-mybatis</module>
         <module>springboot-retry</module>
-<!--        <module>springboot-dubbo</module>-->
+        <module>springboot-redis</module>
+        <module>springboot-webflux</module>
     </modules>
 
     <parent>
