@@ -1,7 +1,8 @@
 #Redisson配置
 singleServerConfig:
-  address: "redis://192.168.15.129:6381"
-  password: 12345
+#  address: "redis://192.168.15.129:6381"
+  address: "redis://192.168.181.128:6379"
+#  password: 12345
   clientName: null
   database: 7 #选择使用哪个数据库0~15
   idleConnectionTimeout: 10000

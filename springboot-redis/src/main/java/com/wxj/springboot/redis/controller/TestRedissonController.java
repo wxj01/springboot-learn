@@ -2,11 +2,15 @@ package com.wxj.springboot.redis.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wxj.springboot.redis.annotation.RedissonLockAnnotation;
+import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author wxj
@@ -46,5 +50,15 @@ public class TestRedissonController {
         return "success";
     }
 
+    @GetMapping("/testData")
+    public void testData(){
 
+        //插入 字符串
+        RBucket<String> keyObj = redissonClient.getBucket("keyStr");
+        keyObj.set("testStr",300l, TimeUnit.SECONDS);
+
+        //查询 字符串
+        RBucket<String> keyGet = redissonClient.getBucket("keyStr");
+        System.out.println(keyGet.get());
+    }
 }
