@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: multi-datasource
+  datasource:
+    # 主数据库
+    master:
+      # 注意，整合多数据源时如果使用springboot默认的数据库连接池Hikari，指定连接数据使用的是jdbc-url而不是url属性
+      jdbc-url: jdbc:mysql://localhost:3306/multi_test1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+    # 副数据库
+    slave:
+      # 注意，整合多数据源时如果使用springboot默认的数据库连接池Hikari，指定连接数据使用的是jdbc-url而不是url属性
+      jdbc-url: jdbc:mysql://localhost:3306/multi_test2?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver

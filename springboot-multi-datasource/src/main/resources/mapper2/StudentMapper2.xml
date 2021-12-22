@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxj.springboot.multidatasource.mapper2.StudentMapper2">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wxj.springboot.multidatasource.model.Student2">
+        <result column="Sno" property="sNo" />
+        <result column="Sname" property="sName" />
+        <result column="Ssex" property="sSex" />
+        <result column="Sage" property="sAge" />
+        <result column="Sdept" property="sDept" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="query_List">
+        Sno,
+        Sname,
+        Ssex,
+        Sage,
+        Sdept
+    </sql>
+
+    <select id="list" resultMap="BaseResultMap">
+        select * from Student
+    </select>
+
+</mapper>
