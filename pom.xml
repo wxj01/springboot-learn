@@ -14,6 +14,8 @@
         <module>springboot-webflux</module>
         <module>springboot-elasticsearch</module>
         <module>springboot-multi-jpa-datasource</module>
+        <module>springboot-multi-datasource</module>
+        <module>springboot-customer-starter</module>
     </modules>
 
     <parent>
