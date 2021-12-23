@@ -6,7 +6,6 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -20,36 +19,35 @@ import javax.sql.DataSource;
  * @author wxj
  * @version 1.0
  * @description: TODO
- * @date 2021/12/22 0022 20:50
+ * @date 2021/12/23 0023 8:52
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "customerEntityManagerFactory",
-        transactionManagerRef = "customerTransactionManager",
-        basePackages = {"com.wxj.springboot.multi.jap.datasource.multi.jpa.datasource.customer.dao"})
-public class CustomerConfig {
+@EnableJpaRepositories(entityManagerFactoryRef = "productEntityManagerFactory",
+        transactionManagerRef = "productTransactionManager",
+        basePackages = {"com.wxj.springboot.multi.jap.datasource.multi.jpa.datasource.product.dao"})
+public class ProductConfig {
 
-    @Primary
-    @Bean(name = "customerDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.customer")
-    public DataSource customerDataSource(){
+    @Bean(name = "productDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.product")
+    public DataSource dataSource(){
         return DataSourceBuilder.create().build();
     }
 
-    @Primary
-    @Bean(name = "customerEntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(
-            EntityManagerFactoryBuilder builder, @Qualifier("customerDataSource") DataSource dataSource
+    @Bean(name = "productEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+            EntityManagerFactoryBuilder builder,
+            @Qualifier("productDataSource") DataSource dataSource
     ){
         return builder.dataSource(dataSource)
                 .packages("com.wxj.springboot.multi.jap.datasource.multi.jpa.datasource.model")
-                .persistenceUnit("customer").build();
+                .persistenceUnit("product")
+                .build();
     }
 
-    @Primary
-    @Bean(name = "customerTransactionManager")
+    @Bean(name = "productTransactionManager")
     public PlatformTransactionManager productTransactionManager(
-            @Qualifier("customerEntityManagerFactory")EntityManagerFactory customerEntityManagerFactory){
-        return new JpaTransactionManager(customerEntityManagerFactory);
+            @Qualifier("productEntityManagerFactory")EntityManagerFactory productEntityManagerFactory){
+        return new JpaTransactionManager(productEntityManagerFactory);
     }
 }

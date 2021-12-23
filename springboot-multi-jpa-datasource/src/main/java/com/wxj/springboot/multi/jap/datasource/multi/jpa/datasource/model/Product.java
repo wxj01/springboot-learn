@@ -1,9 +1,6 @@
 package com.wxj.springboot.multi.jap.datasource.multi.jpa.datasource.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,18 +13,20 @@ import javax.persistence.Id;
  * @description: TODO
  * @date 2021/12/22 0022 20:45
  */
-@Entity(name = "Student")
+@Entity(name = "product")
 @Data
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String sNo;
-    private String sName;
-    private String sSex;
-    private Integer sAge;
-    private String sDept;
+    private Integer id;
+    private String name;
+    private double price;
+
+
 }
