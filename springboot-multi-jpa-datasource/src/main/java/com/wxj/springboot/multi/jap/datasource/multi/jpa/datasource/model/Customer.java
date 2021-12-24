@@ -11,13 +11,11 @@ import javax.persistence.Id;
  * @author wxj
  * @version 1.0
  * @description: TODO
+ * @Data   ：注解在类上；提供类所有属性的 getting 和 setting 方法，此外还提供了equals、canEqual、hashCode、toString 方法
  * @date 2021/12/22 0022 20:45
  */
 @Entity(name = "customer")
 @Data
-@Getter
-@Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer {
