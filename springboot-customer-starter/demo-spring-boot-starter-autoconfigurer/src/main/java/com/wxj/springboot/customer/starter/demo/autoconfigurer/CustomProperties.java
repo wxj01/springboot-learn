@@ -1,7 +1,6 @@
 package com.wxj.springboot.customer.starter.demo.autoconfigurer;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -11,8 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2021/12/23 0023 19:30
  */
 @ConfigurationProperties("auto.custom")
-@Getter
-@Setter
+@Data
 public class CustomProperties {
     private String name;
 

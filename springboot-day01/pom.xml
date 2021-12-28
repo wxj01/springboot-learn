@@ -32,10 +32,23 @@
             <scope>test</scope>
         </dependency>
 
+        <!--引入自定义demo starter-->
         <dependency>
             <groupId>com.wxj.springboot.customer.starter</groupId>
             <artifactId>demo-spring-boot-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!--引入自定义thread pool starter-->
+        <dependency>
+            <groupId>com.wxj.springboot.pool.starter</groupId>
+            <artifactId>threadpool-spring-boot-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

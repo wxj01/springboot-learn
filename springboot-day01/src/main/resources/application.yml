@@ -1,0 +1,25 @@
+#debug=true
+#auto.custom.name=wxj
+#
+#thread.pool.list.threadName=taskExecutor
+
+debug: true
+
+auto:
+  custom:
+    name: wxj
+
+thread:
+  isopen: true
+  pool:
+    list:
+      - threadName: taskExecutor #线程池名称
+        corePoolSize: 10         #核心线程数
+        maxPoolSize: 20          #最大线程数
+        queueCapacity: 2000      #缓冲队列
+        keepAliveSeconds: 60     #允许线程的空闲时间(秒)
+      - threadName: taskExecutor1 #线程池名称
+        corePoolSize: 10          #核心线程数
+        maxPoolSize: 20           #最大线程数
+        queueCapacity: 2000       #缓冲队列
+        keepAliveSeconds: 60      #允许线程的空闲时间(秒)

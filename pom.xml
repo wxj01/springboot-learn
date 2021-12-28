@@ -16,6 +16,7 @@
         <module>springboot-multi-jpa-datasource</module>
         <module>springboot-multi-datasource</module>
         <module>springboot-customer-starter</module>
+        <module>springboot-pool-starter</module>
     </modules>
 
     <parent>
