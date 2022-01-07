@@ -17,6 +17,7 @@
         <module>springboot-multi-datasource</module>
         <module>springboot-customer-starter</module>
         <module>springboot-pool-starter</module>
+        <module>springboot-kafka</module>
     </modules>
 
     <parent>
