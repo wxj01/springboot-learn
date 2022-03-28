@@ -18,6 +18,7 @@
         <module>springboot-customer-starter</module>
         <module>springboot-pool-starter</module>
         <module>springboot-kafka</module>
+        <module>springboot-netty</module>
     </modules>
 
     <parent>
