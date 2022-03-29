@@ -37,14 +37,14 @@
             <artifactId>grpc-all</artifactId>
             <version>1.11.0</version>
         </dependency>
-
-
-
-
+        <dependency>
+            <artifactId>netty-transport</artifactId>
+            <groupId>io.netty</groupId>
+            <version>4.1.67.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
-
         <extensions>
             <extension>
                 <groupId>kr.motd.maven</groupId>

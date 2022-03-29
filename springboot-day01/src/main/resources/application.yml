@@ -1,8 +1,3 @@
-#debug=true
-#auto.custom.name=wxj
-#
-#thread.pool.list.threadName=taskExecutor
-
 debug: true
 
 auto:
