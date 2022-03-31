@@ -77,7 +77,7 @@ public class NettyClient {
 //            channelFuture.channel().closeFuture().sync();
         } finally {
             // 清理代码块
-//            group.shutdownGracefully();
+//            group.shutdownGracefully();  //加上这个group 直接就关闭了。不走 wait 之前 call 被调用 后续的逻辑
         }
 
 

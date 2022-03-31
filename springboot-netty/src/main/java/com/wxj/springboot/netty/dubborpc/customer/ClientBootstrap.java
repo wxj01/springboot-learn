@@ -23,7 +23,7 @@ public class ClientBootstrap {
         HelloService helloService = (HelloService) customer.getBean(HelloService.class, providerName);
 
         for (;;){
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(1);
             //通过代理对象调用服务提供者的方法(服务)
             String msg = helloService.hello("你好 dubbo ~ ");
             System.out.println("调用的结果 res= " + msg);
