@@ -13,13 +13,6 @@
     <artifactId>springboot-day01</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>springboot-day01</name>
-
-    <description>Demo project for Spring Boot</description>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -17,8 +17,6 @@
     <groupId>com.wxj.springboot.customer.starter</groupId>
     <artifactId>springboot-customer-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-customer-starter</name>
-
 
 <!--    <dependencies>-->
 <!--        <dependency>-->
