@@ -1,4 +1,4 @@
-package com.wxj.springboot.mybatis.pojo;
+package com.wxj.springboot.mybatis.domain.entity;
 
 /**
  * @author wxj

@@ -1,6 +1,6 @@
 package com.wxj.springboot.mybatis.service;
 
-import com.wxj.springboot.mybatis.pojo.User;
+import com.wxj.springboot.mybatis.domain.entity.User;
 
 import java.util.List;
 

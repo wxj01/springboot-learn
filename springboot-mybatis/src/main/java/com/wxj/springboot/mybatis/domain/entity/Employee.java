@@ -1,7 +1,6 @@
-package com.wxj.springboot.mybatis.pojo;
+package com.wxj.springboot.mybatis.domain.entity;
 
 import lombok.Data;
-import org.apache.ibatis.type.Alias;
 
 /**
  * @author wxj
@@ -11,11 +10,17 @@ import org.apache.ibatis.type.Alias;
  * @createTime 2022年05月27日 22:29:00
  */
 @Data
-@Alias("emp")
 public class Employee {
 
-    private Integer id;
-    private String lastName;
+    private Integer eid;
+
+    private String empName;
+
+    private Integer age;
+
+    private String sex;
+
     private String email;
-    private String gender;
+
+    private Dept dept;
 }

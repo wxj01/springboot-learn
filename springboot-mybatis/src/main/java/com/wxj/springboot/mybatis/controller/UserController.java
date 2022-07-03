@@ -1,6 +1,6 @@
 package com.wxj.springboot.mybatis.controller;
 
-import com.wxj.springboot.mybatis.pojo.User;
+import com.wxj.springboot.mybatis.domain.entity.User;
 import com.wxj.springboot.mybatis.service.impl.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 

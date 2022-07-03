@@ -1,6 +1,6 @@
 package com.wxj.springboot.mybatis.mapper;
 
-import com.wxj.springboot.mybatis.pojo.User;
+import com.wxj.springboot.mybatis.domain.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  * @Description TODO
  * @createTime 2021年09月15日 19:48:00
  */
-@Mapper
+//@Mapper
 public interface UserMapper {
 
     /**

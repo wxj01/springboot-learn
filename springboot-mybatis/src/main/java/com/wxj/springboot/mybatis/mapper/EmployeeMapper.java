@@ -1,6 +1,6 @@
 package com.wxj.springboot.mybatis.mapper;
 
-import com.wxj.springboot.mybatis.pojo.Employee;
+import com.wxj.springboot.mybatis.domain.entity.Employee;
 
 /**
  * @author wxj
@@ -11,5 +11,10 @@ import com.wxj.springboot.mybatis.pojo.Employee;
  */
 public interface EmployeeMapper {
 
+    /**
+     * 根据id 查询
+     * @param id
+     * @return
+     */
     public Employee getEmpById(Integer id);
 }
