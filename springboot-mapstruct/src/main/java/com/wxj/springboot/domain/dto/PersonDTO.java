@@ -1,5 +1,6 @@
 package com.wxj.springboot.domain.dto;
 
+import com.wxj.springboot.domain.entity.Child;
 import lombok.Data;
 
 /**
@@ -23,4 +24,6 @@ public class PersonDTO {
     private String source;
 
     private String height;
+
+    private Child child;
 }
