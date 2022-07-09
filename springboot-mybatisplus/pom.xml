@@ -61,7 +61,11 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.7.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <!-- pageHelper分页（注意：为避免和mybatis-plus的冲突，需排除部分依赖） -->
