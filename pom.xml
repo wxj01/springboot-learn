@@ -28,6 +28,7 @@
         <module>springboot-netty</module>
         <module>springboot-druid</module>
         <module>springboot-mapstruct</module>
+        <module>springboot-mybatisplus</module>
     </modules>
 
 
