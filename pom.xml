@@ -29,6 +29,7 @@
         <module>springboot-druid</module>
         <module>springboot-mapstruct</module>
         <module>springboot-mybatisplus</module>
+        <module>specificfeature-springboot-starter</module>
     </modules>
 
 
