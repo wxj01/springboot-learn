@@ -7,6 +7,7 @@ package com.wxj.springboot.specificfeature.config;
         import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ConditionalOnExpression("'${specific.branch.rule}' != null")
 public class CustomerConfig {
 
 
