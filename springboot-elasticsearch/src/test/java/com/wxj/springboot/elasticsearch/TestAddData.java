@@ -35,32 +35,37 @@ public class TestAddData {
     @Autowired
     private RestHighLevelClient restHighLevelClient;
 
+    private int startNum = 2; //350000
+    private int endNum = 3; //350000
 
     @Test
     public void testAddBusiness() throws IOException {
         BulkRequest bulkRequest = new BulkRequest();
         List<BusinessWideTable> userList = new ArrayList<>();
         int num = 2;
-        for (int i = num; i <= 89999; i++) {
+        for (int i = startNum; i < endNum; i++) {
             BusinessWideTable businessWideTable = new BusinessWideTable();
             //同一个供应 ，同一个合同，不同的订单
             //一个供应商 (test-1) ，一个合同(三一测试合同-1),该合同10个订单 三一订单1~10
             // test-1 -> 三一测试合同-1 -> 三一订单1~10
             businessWideTable.setDocId(Long.valueOf(i))
-                    .setSupplierId("supplierId-" + num)
-                    .setCompanyName("test-" + num)
+                    .setSupplierId("supplierId-" + i / 6)
+                    .setCompanyName("test-" + i / 6)
                     .setSetTime("2022-8-19")
-                    .setContractId("contractId-" + num)
-                    .setContractName("三一测试合同-" + num)
+                    .setContractId("contractId-" + i / 5)
+                    .setContractName("三一测试合同-" + i / 5)
                     .setContractTime("2022-8-19")
-                    .setContractCompanyId("supplierId-" + num)
-                    .setOrderId("orderId-" + i)
-                    .setOrderName("三一订单-" + i)
+                    .setContractCompanyId("supplierId-" + i / 6)
+                    .setOrderId("orderId-" + i / 4)
+                    .setOrderName("三一订单-" + i / 3)
                     .setOrderTime("2022-8-19")
-                    .setOrderContractId("contractId-" + num);
+                    .setOrderContractId("contractId-" + i / 2);
 
             userList.add(businessWideTable);
-
+//            if (i % 50000 == 0) {
+//                addData2Es(bulkRequest, userList, "test_business_index");
+//                userList.clear();
+//            }
         }
 
         addData2Es(bulkRequest, userList, "test_business_index");
@@ -72,7 +77,7 @@ public class TestAddData {
         BulkRequest bulkRequest = new BulkRequest();
         List<PayableWideTable> userList = new ArrayList<>();
         int num = 2;
-        for (int i = 40000; i <= 99999; i++) {
+        for (int i = startNum; i < endNum; i++) {
             PayableWideTable payableWideTable = new PayableWideTable();
 
             // 一个订单 orderId1 ，对应一个发票清单 ， 一个清单 对应一个发票， 一个发票对应多个建议
@@ -109,10 +114,26 @@ public class TestAddData {
         BulkRequest bulkRequest = new BulkRequest();
         List<FundWideTable> userList = new ArrayList<>();
         int num = 2;
-        for (int i = num; i <= 59999; i++) {
+        for (int i = startNum; i < endNum; i++) {
             FundWideTable fundWideTable = new FundWideTable();
             // 一个付款清单 ，对一个票据 ，一个票据对应多个流水
             //三一付款建议内容-1  -> 三一付款申请单-1 -> 三一票据-1 ->  三一流水详情-1~30
+//            fundWideTable.setDocId(Long.valueOf(i))
+//
+//                    .setPaymentProposalsId("paymentProposalsId-" + i / 2)
+//                    .setPaymentProposalsName("三一付款建议内容-" + i / 3)
+//
+//                    .setPaymentRequestFormId("paymentRequestFormId-" + i / 3)
+//                    .setPaymentRequestFormName("三一付款申请单-" + i / 4)
+//                    .setBillId("billId-" + i)
+//                    .setBillName("三一票据-" + i)
+//                    .setBillTime("2022-8-20")
+//                    .setBillPaymentRequestFormId("paymentRequestFormId-" + i / 5)
+//                    .setWaterId("waterId-" + i)
+//                    .setWaterInfo("三一流水详情-" + i)
+//                    .setWaterTime("2022-8-20")
+//                    .setWaterBillId("billId-" + i);
+
             fundWideTable.setDocId(Long.valueOf(i))
 
                     .setPaymentProposalsId("paymentProposalsId-" + i / 2)
@@ -131,8 +152,14 @@ public class TestAddData {
 
             userList.add(fundWideTable);
 
+//            if (i % 10000 == 0) {
+//                addData2Es(bulkRequest, userList, "test_fund_index");
+//            }
+
         }
         addData2Es(bulkRequest, userList, "test_fund_index");
+
+
     }
 
 
@@ -140,7 +167,7 @@ public class TestAddData {
     public void testBFPData() throws IOException {
         BulkRequest bulkRequest = new BulkRequest();
         List<BFPTable> userList = new ArrayList<>();
-        for (int i = 0; i <= 1024; i++) {
+        for (int i = startNum; i < endNum; i++) {
             BFPTable bfpTable = new BFPTable();
 
 //            private String supplierId;  // 供应商id
@@ -327,7 +354,7 @@ public class TestAddData {
         for (int i = 0; i < userList.size(); i++) {
             //如果是批量更新、删除，调整这里
             bulkRequest.add(new IndexRequest(indexName)
-                    .id("" + i)
+//                    .id("" + UUID.)
                     .source(JSON.toJSONString(userList.get(i)), XContentType.JSON));
         }
         restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
