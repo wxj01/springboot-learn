@@ -19,6 +19,7 @@ import org.elasticsearch.index.query.TermsQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
+import org.elasticsearch.search.sort.SortOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -213,6 +214,7 @@ public class TestAddData {
         //精准查询
 //        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("docId", 1);
         MultiMatchQueryBuilder multiMatchQuery = QueryBuilders.multiMatchQuery("三一");
+        
         // 匹配所有
 //        MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
 
@@ -224,6 +226,12 @@ public class TestAddData {
         //分页
         searchSourceBuilder.from(); // 默认 0
         searchSourceBuilder.size(2000); // 默认 10
+
+//        List<SortBuilder<?>> sorts
+
+        searchSourceBuilder.sort("companyName", SortOrder.ASC);
+//        searchSourceBuilder.sort("invoiceCode", SortOrder.DESC);
+//        searchSourceBuilder.sort("billId", SortOrder.DESC);
 
 
         es_index.source(searchSourceBuilder);

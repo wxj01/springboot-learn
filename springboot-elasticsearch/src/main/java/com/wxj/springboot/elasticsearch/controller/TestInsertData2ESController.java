@@ -27,19 +27,15 @@ public class TestInsertData2ESController {
                              HttpServletRequest request,
                              @RequestBody String sourceData) throws IOException {
         BulkRequest bulkRequest = new BulkRequest();
-//        System.out.println(sourceData);
-//        System.out.println(JSON.toJSONString(sourceData));
-
         for (int i = 0; i < num; i++) {
             //如果是批量更新、删除，调整这里
             bulkRequest.add(new IndexRequest(indexName)
-//                    .id("" + i + 1)
                     .source(sourceData, XContentType.JSON));
         }
         restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
         System.out.println("数据插入完毕");
     }
-
+ 
 
     @PostMapping
     @RequestMapping("/toTheadEs")
