@@ -1,9 +1,8 @@
 package com.wxj.springboot.mybatis.service.impl;
 
-import com.wxj.springboot.mybatis.mapper.UserMapper;
 import com.wxj.springboot.mybatis.domain.entity.User;
+import com.wxj.springboot.mybatis.mapper.UserMapper;
 import com.wxj.springboot.mybatis.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +26,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean insertUser(User user) {
+
+        checkSevice();
         if (user.getUserName() != null && !"".equals(user.getUserName())) {
             try {
                 // 对mysql 数据库增加操作后，影响的行数effecteNum
@@ -44,6 +45,10 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new RuntimeException("信息不能为空！！！！");
         }
+    }
+
+    private void checkSevice() {
+        int i = 1 / 0;
     }
 
     /**

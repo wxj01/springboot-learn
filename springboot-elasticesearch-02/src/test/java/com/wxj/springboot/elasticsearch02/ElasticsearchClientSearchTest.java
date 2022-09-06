@@ -6,6 +6,7 @@ import co.elastic.clients.elasticsearch.core.SearchRequest;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.json.JsonData;
+import com.alibaba.fastjson.JSONObject;
 import com.wxj.springboot.elasticsearch02.entity.AhaIndex;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -35,16 +36,22 @@ public class ElasticsearchClientSearchTest {
     @Test
     public void testRestClient() throws IOException {
 
-        SearchResponse<AhaIndex> search = elasticsearchClient.search(s -> s.index(INDEX_NAME)
+        SearchResponse<Object> search = elasticsearchClient.search(s -> s.index(INDEX_NAME)
                         .query(q ->
                                 q.term(t ->
                                         t.field("name").value(v -> v.stringValue("lisi1"))
                                 )
                         ),
-                AhaIndex.class);
+                Object.class);
 
-        for (Hit<AhaIndex> hit : search.hits().hits()) {
+        List<Hit<Object>> hits = search.hits().hits();
+
+        for (Hit<Object> hit : search.hits().hits()) {
+            Object source = hit.source();
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("abc", source);
             log.info("== hit: source: {}, id: {}", hit.source(), hit.id());
+            log.info("== jsonObject: {} ", jsonObject);
         }
 
     }
