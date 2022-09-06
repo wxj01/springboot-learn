@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -46,6 +47,35 @@ public class SearchServiceImpl implements SearchService {
     }
 
     /**
+     * @param colName    主键对应的字段名称
+     * @param colValue   主键对应值
+     * @param indexName  索引名称
+     * @param fieldNames 索引需要查询的字段
+     * @return
+     */
+    @Override
+    public Object obtainResultById(String colName, String colValue, String indexName, List<String> fieldNames) {
+        try {
+            SearchResponse<Object> search = elasticsearchClient.search(s -> s.index(indexName)
+                            .query(q -> q.term(t -> t.field(colName).value(v -> v.stringValue(colValue))))
+                            .source(o -> o.filter(f -> f.includes(fieldNames)))
+                    , Object.class);
+            // 根据主键的去查询，最多只有一条数据
+            for (Hit<Object> hit : search.hits().hits()) {
+                Object source = hit.source();
+                return source;
+            }
+        } catch (IOException e) {
+            log.info("==== 异常：{}", e);
+            e.printStackTrace();
+        }
+
+        // docId 中没有 对应的主键，但是 索引对应的字段还要展示，值都是空，这时不能直接返回空，
+        // 需要返回一个字段值为空的 字符串
+        return null;
+    }
+
+    /**
      * 列表 查询
      *
      * @param searchContent
@@ -59,9 +89,16 @@ public class SearchServiceImpl implements SearchService {
         List<String> indexNameList = searchService.obtainIndex(formInfo);
         // 根据查询内容获取 docId ,去重、排序、分页
         List<String> docIdList = searchService.obtainDocIdList("三一", indexNameList, 2, 10);
+
+        List<Object> resultList = new ArrayList<>();
+
+
         //根据docId 去查index
         docIdList.forEach(docId -> {
-            //获取单个索引 需要查询的 字段
+            //
+            // 1、拿到一个docId 如何确定 哪些索引
+            // 2、获取单个索引 需要查询的 字段
+            // 3、索引和对应的字段 获取数据
             List<String> fieldNames = searchService.obtainFieldNamesByIndex("indexName");
             //获取index 的 字段值
             // 索引 和  需要查询的字段 要对应上
@@ -69,8 +106,13 @@ public class SearchServiceImpl implements SearchService {
             List<Object> indexName02 = searchService.obtainResultByDocId(docId, "indexName02", fieldNames);
             List<Object> indexName03 = searchService.obtainResultByDocId(docId, "indexName03", fieldNames);
 
+            Map<String, Object> map = new LinkedHashMap<>();
+            map.put("indexName01", indexName01);
+            map.put("indexName02", indexName02);
+            map.put("indexName03", indexName03);
+
             // 拼接各领域的字段
-            searchService.spliceResult(indexName01);
+            resultList.add(searchService.spliceResult(map));
         });
 
         return null;
@@ -170,13 +212,24 @@ public class SearchServiceImpl implements SearchService {
     /**
      * 将获取的结果数据 ，进行拼接返回
      *
-     * @param responseList 查询的结果
+     * @param spliceDataMap
      * @return
      */
     @Override
-    public String spliceResult(List<Object> responseList) {
+    public Object spliceResult(Map<String, Object> spliceDataMap) {
         // 列表的一条完整的数据
         JSONObject jsonObject = new JSONObject();
-        return null;
+
+        // 从map 中获取索引 及  数据
+        // 商1应3资5  商1应5资3  商5应1资3
+        // 需要判断 哪个领域的数据最多
+        //根据docId中的各索引对应的主键去查，就可以一个docId 对应到 一条数据
+
+        // 拼接的时候还有一个顺序的问题
+        for (String key : spliceDataMap.keySet()) {
+            jsonObject.put(key, spliceDataMap.get(key));
+        }
+
+        return jsonObject;
     }
 }

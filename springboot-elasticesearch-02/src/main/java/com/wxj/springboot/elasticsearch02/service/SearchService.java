@@ -1,6 +1,7 @@
 package com.wxj.springboot.elasticsearch02.service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 列表查询
@@ -59,6 +60,15 @@ public interface SearchService {
 
 
     /**
+     * @param colName    主键对应的字段名称
+     * @param colValue   主键对应值
+     * @param indexName  索引名称
+     * @param fieldNames 索引需要查询的字段
+     * @return
+     */
+    Object obtainResultById(String colName, String colValue, String indexName, List<String> fieldNames);
+
+    /**
      * 根据索引名获取要查的字段
      *
      * @param indexName
@@ -70,9 +80,9 @@ public interface SearchService {
     /**
      * 将获取的结果数据 ，进行拼接返回
      *
-     * @param responseList 查询的结果
+     * @param spliceData
      * @return
      */
-    String spliceResult(List<Object> responseList);
+    Object spliceResult(Map<String, Object> spliceData);
 
 }
