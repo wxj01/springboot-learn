@@ -31,6 +31,7 @@
         <module>springboot-mybatisplus</module>
         <module>specificfeature-springboot-starter</module>
         <module>elasticsearch-springboot-starter</module>
+        <module>springboot-mongodb</module>
     </modules>
 
 
