@@ -206,7 +206,9 @@ public class TestAddData {
     public void queryEsData() throws IOException {
 //        SearchRequest es_index = new SearchRequest("es_index");
         // 一次从三个索引中查询数据
-        SearchRequest es_index = new SearchRequest("test_business_index", "test_payable_index", "test_fund_index");
+        SearchRequest es_index = new SearchRequest("" +
+                "" +
+                "", "test_payable_index", "test_fund_index");
         //使用搜索条件构造器，构造搜索条件
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
@@ -214,7 +216,7 @@ public class TestAddData {
         //精准查询
 //        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("docId", 1);
         MultiMatchQueryBuilder multiMatchQuery = QueryBuilders.multiMatchQuery("三一");
-        
+
         // 匹配所有
 //        MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
 
