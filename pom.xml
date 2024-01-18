@@ -28,6 +28,9 @@
         <module>springboot-netty</module>
         <module>springboot-druid</module>
         <module>springboot-mapstruct</module>
+        <module>springboot-mybatisplus</module>
+        <module>specificfeature-springboot-starter</module>
+        <module>elasticsearch-springboot-starter</module>
     </modules>
 
 
@@ -51,6 +54,7 @@
         <mapstruct.version>1.5.2.Final</mapstruct.version>
         <hutool.version>5.7.17</hutool.version>
         <fastJson.version>1.2.77</fastJson.version>
+        <logback.version>1.2.5</logback.version>
     </properties>
 
     <dependencyManagement>
@@ -168,6 +172,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastJson.version}</version>
+            </dependency>
+
+            <!--添加日志-->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
             </dependency>
 
         </dependencies>

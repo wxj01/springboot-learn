@@ -1,8 +1,9 @@
 debug: true
 
-auto:
-  custom:
-    name: wxj
+#auto:
+#  custom:
+#    name: wxj
+
 
 thread:
   isopen: true
@@ -18,3 +19,6 @@ thread:
         maxPoolSize: 20           #最大线程数
         queueCapacity: 2000       #缓冲队列
         keepAliveSeconds: 60      #允许线程的空闲时间(秒)
+specific:
+  feature:
+    specific-name:

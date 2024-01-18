@@ -9,7 +9,7 @@
 	<id>springboot-elasticsearch</id>
 
 	<classpath>
-		<dir name="D:/develop-workspace/ideaWorkSpace/springboot-learn/springboot-elasticsearch/target/classes">
+		<dir name="D:/workspace/springboot-learn/springboot-elasticsearch/target/classes">
 		</dir>
 	</classpath>
 

@@ -16,7 +16,7 @@ import java.util.Map;
  * @createTime 2021年09月15日 20:32:00
  */
 @RestController
-public class UserController {
+class kUserController {
 
     @Resource
     UserServiceImpl userService;
